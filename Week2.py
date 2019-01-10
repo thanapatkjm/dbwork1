@@ -3,14 +3,7 @@ reserv = []
 with open('myGrades1.csv') as csvfile:
     file = csv.reader(csvfile, delimiter=',')
     for row in file:
-        reserv.append(row)
-##        print(', '.join(row))
-##        print(row[0][0:9])
-##        print(row[0:2])
-##    print(reserv)
-##    print("-------------------------------------------------------")
-##    print("\n")
-        
+        reserv.append(row)        
 
 def start():
     global reserv
@@ -27,7 +20,7 @@ def start():
             elif(func=="i"):
                 insert()
             else:
-                print(3)
+                save()
         else: print("Invalid Input\n--------------------")
 
 def edit():
@@ -86,8 +79,28 @@ def insert():
     print("-------------------------------------------------------")
     print("\n")
 
-    
-    
+def save():
+    global reserv
+    file = open('myGrades1.csv','w+')
+##    file.truncate()        
+##    file.close
+    with open('myGrades1.csv', 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile, delimiter=',')
+        myList=[]
+        myRow=[]
+        for row in reserv:
+            myRow=[]
+            for index in row:
+                myRow.append(index)
+            writer.writerow(myRow)
+    reserv=[]
+    with open('myGrades1.csv') as csvfile:
+        file = csv.reader(csvfile, delimiter=',')
+        for row in file:
+            reserv.append(row)  
+    print("Save Done!!!")
+    print("-------------------------------------------------------")
+    print("\n")
     
 
 start()
