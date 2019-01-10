@@ -4,33 +4,38 @@ with open('myGrades1.csv') as csvfile:
     file = csv.reader(csvfile, delimiter=',')
     for row in file:
         reserv.append(row)
-        print(', '.join(row))
+##        print(', '.join(row))
 ##        print(row[0][0:9])
 ##        print(row[0:2])
 ##    print(reserv)
-    print("-------------------------------------------------------")
-    print("\n")
+##    print("-------------------------------------------------------")
+##    print("\n")
         
 
 def start():
+    global reserv
     func=""
     while(True):
+        for row in reserv:
+            print(row)
+        print("-------------------------------------------------------")
+        print("\n")
         func = input("What do you want?\n(i)insert , (e)edit ,(s)save \n")
         if(func=="e" or func=="i" or func=="s"):
             if(func=="e"):
                 edit()
             elif(func=="i"):
-                print(2)
+                insert()
             else:
                 print(3)
-            break
         else: print("Invalid Input\n--------------------")
 
 def edit():
-    semester = input("which semester/year you want to insert?\n")
-    subject = input("Subject ID ?\n")
-    section = input("Section ?\n")
-    grade = input("Grade?\n")
+    global reserv
+    semester = input("which semester/year you want to Edit?\n")
+    subject = input("Subject ID you want to Edit?\n")
+    section = input("Section you want to change to?\n")
+    grade = input("Grade you want to change to?\n")
     reserv_edit=[]
     checkTerm=False
     check=False
@@ -48,17 +53,16 @@ def edit():
     if(check):
         print("Edit Done!!!\n\n")
     else:
-        print("Could not find value match with input")
-    print(reserv_edit)
-   
+        print("Could not find value match with input!!!\n\n")
+    reserv=reserv_edit
 
-##def insert():
-##    semester = input("which semester/year you want so insert?\n")
-##    subject = input("Subject Name ?\n")
-##    credit = input("Subject's credit?\n")
-##    grade = input("Grade?\n")
-##    for i in file
-##        if(i==semester)
+def insert():
+    semester = input("which semester/year you want to insert?\n")
+    subject = input("Subject Name?\n")
+    section = input("Section?\n")
+    credit = input("Subject's credit?\n")
+    grade = input("Grade?\n")
+
 
 
 start()
