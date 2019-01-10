@@ -53,16 +53,41 @@ def edit():
     if(check):
         print("Edit Done!!!\n\n")
     else:
-        print("Could not find value match with input!!!\n\n")
+        print("Could not find value matched with input!!!\n\n")
     reserv=reserv_edit
+    print("-------------------------------------------------------")
+    print("\n")
 
 def insert():
+    global reserv
     semester = input("which semester/year you want to insert?\n")
-    subject = input("Subject Name?\n")
+    subject = input("Subject's ID and Name?\n")
     section = input("Section?\n")
     credit = input("Subject's credit?\n")
     grade = input("Grade?\n")
+    array_insert=[subject,credit,section,grade]
+    reserv_insert=[]
+    check=False
+    checkTerm=False
+    for row in reserv:
+        if(row[0]==semester):
+            checkTerm=True
+            check=True
+        if(checkTerm):
+            if(row[0]==""):
+                reserv_insert.append(array_insert)
+                checkTerm=False
+        reserv_insert.append(row)
+    if(check):
+        print("Insert Done!!!\n\n")
+    else:
+        print("Could not find value matched with input!!!\n\n")
+    reserv=reserv_insert
+    print("-------------------------------------------------------")
+    print("\n")
 
-
+    
+    
+    
 
 start()
