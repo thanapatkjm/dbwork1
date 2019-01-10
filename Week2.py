@@ -1,12 +1,15 @@
 import csv
-
+reserv = []
 with open('myGrades1.csv') as csvfile:
     file = csv.reader(csvfile, delimiter=',')
     for row in file:
+        reserv.append(row)
         print(', '.join(row))
 ##        print(row[0][0:9])
-        print(row[0:2])
-    print()
+##        print(row[0:2])
+##    print(reserv)
+    print("-------------------------------------------------------")
+    print("\n")
         
 
 def start():
@@ -22,30 +25,32 @@ def start():
                 print(3)
             break
         else: print("Invalid Input\n--------------------")
-        
+
 def edit():
-    with open('myGrades1.csv') as csvfile:
-        file = csv.reader(csvfile, delimiter=',')
-        semester = input("which semester/year you want so insert?\n")
-        subject = input("Subject ID ?\n")
-        credit = input("Subject's credit?\n")
-        section = input("Section ?\n")
-        grade = input("Grade?\n")
-        check=False
-        for row in file:
-##            print(len(row))
-            if(check=True):
-                if(row[0][0:9]==subject):
-                    row[1]= 
-            if(row[0]==semester):
+    semester = input("which semester/year you want to insert?\n")
+    subject = input("Subject ID ?\n")
+    section = input("Section ?\n")
+    grade = input("Grade?\n")
+    reserv_edit=[]
+    checkTerm=False
+    check=False
+    for row in reserv:
+        if(checkTerm):
+            if(row[0][0:9]==subject):
+                row[2]=section
+                row[3]=grade
                 check=True
-                print(1)
-            if(row[0]==''):
-                check=False
-                for i in row
-                print(1)
-            
-##    
+        if(row[0]==semester):
+            checkTerm=True
+        if(row[0]=="Total Credits"):
+            checkTerm=False
+        reserv_edit.append(row)
+    if(check):
+        print("Edit Done!!!\n\n")
+    else:
+        print("Could not find value match with input")
+    print(reserv_edit)
+   
 
 ##def insert():
 ##    semester = input("which semester/year you want so insert?\n")
